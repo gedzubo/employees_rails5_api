@@ -2,7 +2,7 @@ module V1
   class EmployeesController < ApiController
 
     def index
-      @employees = Employee.all
+      @employees = Employee.includes(:salaries).all
       render json: @employees
     end
 

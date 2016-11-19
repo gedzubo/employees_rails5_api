@@ -9,4 +9,6 @@ class Employee < ApplicationRecord
       "Female"
     end
   end
+
+  has_many :salaries, foreign_key: :emp_no
 end
