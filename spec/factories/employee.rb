@@ -9,6 +9,8 @@ FactoryGirl.define do
     after(:create) do |e|
       FactoryGirl.create(:salary1)
       FactoryGirl.create(:title1)
+      FactoryGirl.create(:department1)
+      FactoryGirl.create(:dept_emp1)
     end
   end
 
@@ -24,6 +26,9 @@ FactoryGirl.define do
       FactoryGirl.create(:title2)
       FactoryGirl.create(:salary3)
       FactoryGirl.create(:title3)
+      FactoryGirl.create(:department2)
+      FactoryGirl.create(:dept_emp2)
+      FactoryGirl.create(:dept_manager1)
     end
   end
 end
