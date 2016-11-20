@@ -5,4 +5,7 @@ class EmployeeSerializer < ActiveModel::Serializer
   end
 
   has_many :salaries
+  has_many :titles
+  has_many :dept_managers
+  has_many :dept_emps
 end

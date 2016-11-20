@@ -2,7 +2,7 @@ module V1
   class EmployeesController < ApiController
 
     def index
-      @employees = Employee.includes(:salaries).all
+      @employees = Employee.include_dependencies.page(params[:page])
       render json: @employees
     end
 

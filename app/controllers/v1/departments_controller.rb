@@ -2,7 +2,7 @@ module V1
   class DepartmentsController < ApiController
 
     def index
-      @departments = Department.all
+      @departments = Department.page(params[:page])
       render json: @departments
     end
 
