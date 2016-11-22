@@ -1,4 +1,6 @@
 class DepartmentSerializer < ActiveModel::Serializer
+  cache key: 'department'
+  
   attributes :name
 
   def name
