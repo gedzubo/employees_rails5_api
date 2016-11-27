@@ -11,6 +11,11 @@ class Employee < ApplicationRecord
     includes(:salaries, :titles, :dept_emps, :dept_managers)
   }
 
+  scope :find_all_by_full_name, ->(term) do
+    where("LOWER(first_name) LIKE :term OR LOWER(last_name) LIKE :term OR LOWER(full_name) LIKE :term", 
+      term: "#{term}%")
+  end
+
   def get_gender
     case self.gender
     when "M"
@@ -19,4 +24,6 @@ class Employee < ApplicationRecord
       "Female"
     end
   end
+
+  
 end
