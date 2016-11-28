@@ -16,6 +16,17 @@ class Employee < ApplicationRecord
       term: "#{term}%")
   end
 
+  scope :filter_by_gender, ->(param) do
+    case param
+    when "M"
+      where("gender = 'M'")
+    when "F"
+      where("gender = 'F'")
+    else
+      self
+    end
+  end
+
   def get_gender
     case self.gender
     when "M"

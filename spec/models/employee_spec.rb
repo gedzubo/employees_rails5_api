@@ -25,4 +25,17 @@ RSpec.describe Employee, type: :model do
       expect(Employee.find_all_by_full_name("Bezalel Simmel")).to eq([@employee2])
     end
   end
+
+  describe "scope filter_by_gender" do
+    before(:each) do
+      @employee1 = create(:employee1)
+      @employee2 = create(:employee2)
+    end
+    it "finds male employees" do
+      expect(Employee.filter_by_gender("M")).to eq([@employee1])
+    end
+    it "finds female employees" do
+      expect(Employee.filter_by_gender("F")).to eq([@employee2])
+    end
+  end
 end
