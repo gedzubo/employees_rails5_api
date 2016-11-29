@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :departments, only: [:index, :show]
     resources :employees, only: [:index, :show]
+    resources :titles, only: [:index]
   end
 end

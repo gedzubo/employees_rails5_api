@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127221622) do
+ActiveRecord::Schema.define(version: 20161129101233) do
 
   create_table "departments", primary_key: "dept_no", id: :string, limit: 4, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "dept_name", limit: 40, null: false
@@ -49,11 +49,17 @@ ActiveRecord::Schema.define(version: 20161127221622) do
     t.date    "to_date",   null: false
   end
 
+  create_table "title_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
   create_table "titles", primary_key: ["emp_no", "title", "from_date"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "emp_no",               null: false
-    t.string  "title",     limit: 50, null: false
-    t.date    "from_date",            null: false
+    t.integer "emp_no",                   null: false
+    t.string  "title",         limit: 50, null: false
+    t.date    "from_date",                null: false
     t.date    "to_date"
+    t.integer "title_type_id"
+    t.index ["title_type_id"], name: "index_titles_on_title_type_id", using: :btree
   end
 
   add_foreign_key "dept_emp", "departments", column: "dept_no", primary_key: "dept_no", name: "dept_emp_ibfk_2", on_delete: :cascade
